@@ -13,14 +13,6 @@ from django.shortcuts import get_object_or_404
 from utils.time_utils import DateTimeUtils
 
 
-# from miare.celery import weekly_income_process
-
-
-# @api_view(['GET'])
-# def get_income(request):
-#     return {"res": True}
-
-
 class CourierViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Couriers to be viewed or edited.
@@ -32,8 +24,6 @@ class CourierViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         serializer = UserSerializer(self.queryset, many=True)
         return Response(serializer.data)
-        # serializer = self.get_serializer(self.get_queryset(), many=True)
-        # return self.get_paginated_response(self.paginate_queryset(serializer.data))
 
     def retrieve(self, request, pk=None):
         item = get_object_or_404(self.queryset, pk=pk)
@@ -116,22 +106,6 @@ class CourierViewSet(viewsets.ModelViewSet):
             obj.save(using=IncomeWeeklyReport.objects.db)
 
 
-#
-# @action(detail=True, methods=['post'])
-# def add_user(self, request, pk=None):
-#     user = self.get_object()
-#     return dict(user)
-#     serializer = UserSerializer(data=request.data)
-#     if serializer.is_valid():
-#         user.set_password(serializer.validated_data['password'])
-#         user.save()
-#         return Response({'status': 'password set'})
-#     else:
-#         return Response({'status': 'password set'})
-#         return Response(serializer.errors,
-#                         status=status.HTTP_400_BAD_REQUEST)
-
-
 class IncomeWeeklyReportViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Income Report to be viewed or edited.
@@ -167,7 +141,6 @@ class IncomeWeeklyReportViewSet(viewsets.ModelViewSet):
             return Response({"to_date": "to_date must be greater than from_date"}, status=status.HTTP_400_BAD_REQUEST)
         serializer = IncomeWeeklyReportSerializer(self.queryset.filter(courier_id=pk, date__range=[from_date, to_date]),
                                                   many=True)
-        # print(serializer.data)
         return Response(serializer.data)
 
 
@@ -183,6 +156,5 @@ class IncomeDailyReportViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        item = get_object_or_404(self.queryset.filter(courier_id=pk))
-        serializer = IncomeDailyReportSerializer(item)
+        serializer = IncomeDailyReportSerializer(self.queryset.filter(courier_id=pk), many=True)
         return Response(serializer.data)

@@ -8,16 +8,11 @@ class User(models.Model):
 
 
 class Income(models.Model):
-    # courier_id = models.IntegerField(default=None)
     courier = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     mission_id = models.IntegerField()
     income_type_id = models.IntegerField()
     amount = models.IntegerField()
     created_at = models.DateTimeField()
-
-    # def save(self, force_insert=False, force_update=False, using=None,
-    #          update_fields=None):
-    #     print("ok")
 
 
 class IncomeDailyReport(models.Model):
