@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "27737f02-816b-43c7-98f8-d06a9778576d",
+		"name": "Miare",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courier",
+			"item": [
+				{
+					"name": "add courier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"yup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/couriers/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"couriers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get couriers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/couriers/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"couriers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get courier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/couriers/1/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"couriers",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Income",
+			"item": [
+				{
+					"name": "add courier income",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mission_id\": 333,\r\n  \"income_type_id\": 1,\r\n  \"amount\": -2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/couriers/1/income/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"couriers",
+								"1",
+								"income",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get courier income",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/couriers/1/income/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"couriers",
+								"1",
+								"income",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Daily",
+					"item": [
+						{
+							"name": "get daily reports",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/reports/daily/couriers/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"reports",
+										"daily",
+										"couriers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get daily report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/reports/daily/couriers/1/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"reports",
+										"daily",
+										"couriers",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Weekly",
+					"item": [
+						{
+							"name": "get weekly reports",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/reports/weekly/couriers/?from_date=2022-04-16&to_date=2022-04-23",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"reports",
+										"weekly",
+										"couriers",
+										""
+									],
+									"query": [
+										{
+											"key": "from_date",
+											"value": "2022-04-16"
+										},
+										{
+											"key": "to_date",
+											"value": "2022-04-23"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get weekly report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/reports/weekly/couriers/1/?from_date=2022-04-16&to_date=2022-04-23",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"reports",
+										"weekly",
+										"couriers",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "from_date",
+											"value": "2022-04-16"
+										},
+										{
+											"key": "to_date",
+											"value": "2022-04-23"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://127.0.0.1:9000/",
+			"type": "string"
+		}
+	]
+}
