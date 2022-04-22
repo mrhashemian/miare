@@ -184,7 +184,12 @@ GET   /api/api/reports/weekly/couriers/{courier_id}/?from_date={from_date}&to_da
 {
     "courier_id": int,
     "income": int,
-    "date": str
+    "date": str,
+    "courier": {
+            "id": int,
+            "name": str
+        }
+    }
 }
 ```
 
