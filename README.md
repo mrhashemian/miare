@@ -168,15 +168,12 @@ GET   /api/api/reports/daily/couriers/{courier_id}/
 GET Weekly Report:
 
 ```http
-GET   /api/api/reports/weekly/couriers/{courier_id}/
+GET   /api/api/reports/weekly/couriers/{courier_id}/?from_date={from_date}&to_date={to_date}
 ```
 
-| path Parameter | Type | Description |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `courier_id` | `int` | **Optional** |
-
-| query Parameter | Type | Description |
-| :--- | :--- | :--- |
 | `from_date` | `str` | **Required** |
 | `to_date` | `str` | **Required** |
 
@@ -187,7 +184,12 @@ GET   /api/api/reports/weekly/couriers/{courier_id}/
 {
     "courier_id": int,
     "income": int,
-    "date": str
+    "date": str,
+    "courier": {
+            "id": int,
+            "name": str
+        }
+    }
 }
 ```
 
